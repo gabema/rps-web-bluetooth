@@ -14,52 +14,9 @@ const recievedOpponentPiece = (figure) => {
 };
 
 const decideVictor = (myFigure, theirFigure) => {
-    // const status = myFigure === 'rock' ? (theirFigure === 'rock' ? 'tie' : (theirFigure === 'scissor' ? 'win' : 'lose')) :
-    //              (myFigure === 'paper' ? (theirFigure === 'paper' ? 'tie' : (theirFigure === 'paper' ? 'win' : 'lose')) :
-    //              (myFigure === 'scissor' ? (theirFigure === 'scissor' ? 'tie' : (theirFigure === 'rock' ? 'win' : 'lose')) : 'lose'));
-    let status;
-    if (myFigure === theirFigure)
-        status = 'tie';
-    else {
-        switch(myFigure) {
-            case 'rock':
-                switch (theirFigure) {
-                    case 'scissor':
-                        status = 'win';
-                        break;
-                    case 'paper':
-                    default:
-                        status = 'lose';
-                        break;
-                }
-                break;
-            case 'paper':
-                switch (theirFigure) {
-                    case 'rock':
-                        status = 'win';
-                        break;
-                    case 'scissor':
-                    default:
-                        status = 'lose';
-                        break;
-                }
-                break;
-            case 'scissor':
-                switch (theirFigure) {
-                    case 'paper':
-                        status = 'win';
-                        break;
-                    case 'rock':
-                    default:
-                        status = 'lose';
-                        break;
-                }
-                break;
-            default:
-                status = 'lose';
-                break;
-        }
-    }
+    const status = myFigure === 'rock' ? (theirFigure === 'rock' ? 'tie' : (theirFigure === 'scissor' ? 'win' : 'lose')) :
+                 (myFigure === 'paper' ? (theirFigure === 'paper' ? 'tie' : (theirFigure === 'paper' ? 'win' : 'lose')) :
+                 (myFigure === 'scissor' ? (theirFigure === 'scissor' ? 'tie' : (theirFigure === 'rock' ? 'win' : 'lose')) : 'lose'));
 
     return {
         type: 'SET_VICTOR',
