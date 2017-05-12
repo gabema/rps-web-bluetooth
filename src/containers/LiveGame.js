@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from '../components/Game';
-import { nextFigure } from '../actions';
+import { nextFigure, waitingForPiece } from '../actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,16 +10,13 @@ const mapStateToProps = (state) => {
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, getState) => {
   return {
-    // onTodoClick: (id) => {
-    //   dispatch(toggleTodo(id))
-    // }
     onChangePiece: (currentFigure) => {
-        dispatch(nextFigure(currentFigure))
+        dispatch(nextFigure(currentFigure));
     },
-    onPlayPiece: () => {
-
+    onPlayPiece: (figure) => {
+        dispatch(waitingForPiece(figure));
     },
   }
 };
